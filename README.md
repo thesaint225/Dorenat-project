@@ -1,69 +1,70 @@
-# React + TypeScript + Vite
+🍿 Snack Shop MVP
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A single-page React app where customers can browse snack flavors, add them to a cart, and checkout via WhatsApp.
+This project is both a learning exercise (to practice React fundamentals) and a portfolio showcase (to demonstrate clean, modern React code).
 
-Currently, two official plugins are available:
+✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Product Display:
 
-## Expanding the ESLint configuration
+Shows snack flavors with names, prices, and images.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Cart System:
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Add flavors to cart, update quantities, remove items.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+Real-time total calculation.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Checkout via WhatsApp:
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Pre-fills an order message with selected items + total.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Opens WhatsApp to confirm the order.
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+🛠 Tech Stack
+
+React (functional components + hooks)
+
+Custom Hook (useCart) for cart state (single source of truth, no Context).
+
+TypeScript (for type safety, optional but recommended).
+
+CSS / Tailwind for responsive styling.
+
+Vercel / Netlify for deployment.
+
+📂 Project Structure
+src/
+components/
+Header.tsx
+FlavorList.tsx
+Cart.tsx
+CheckoutButton.tsx
+hooks/
+useCart.ts
+utils/
+formatPrice.ts
+calculateCartTotal.ts
+generateWhatsAppLink.ts
+capitalize.ts
+App.tsx
+
+🚀 Getting Started
+
+1. Clone the repo
+
+git clone https://github.com/thesaint225/Dorenat-project.git
+
+2. Install dependencies
+   npm install
+
+# or
+
+yarn install
+
+3. Run the app
+   npm run dev
+
+# or
+
+yarn dev
