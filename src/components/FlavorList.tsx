@@ -1,22 +1,18 @@
-import useCart from '../hooks/useCart';
 import useProducts from '../hooks/useProducts';
 import Spinner from './Spinner';
+import type { CartItem } from '../types/types';
 
-export default function FlavorList() {
-  // destructure the hook return value
-  const { addToCart } = useCart();
+interface FlavorListProps {
+  cartItems: CartItem[];
+  addToCart: (item: CartItem) => void;
+  updateQuantity: (id: string, quantity: number) => void;
+  removeFromCart: (id: string) => void;
+}
 
-  // destructure + rename: "data" → "products"
+export default function FlavorList({ addToCart }: FlavorListProps) {
   const { data: products, loading } = useProducts();
 
-  // show spinner while loading
-  if (loading) {
-    return (
-      <h2>
-        <Spinner />
-      </h2>
-    );
-  }
+  if (loading) return <Spinner />;
 
   return (
     <div>
@@ -26,7 +22,8 @@ export default function FlavorList() {
           <img
             src={product.image}
             alt={product.name}
-            style={{ width: '100px', height: '100px' }}
+            width={100}
+            height={100}
           />
           <p>{product.description}</p>
           <p>${product.price.toFixed(2)}</p>
