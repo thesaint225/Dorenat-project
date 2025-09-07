@@ -23,24 +23,29 @@ export default function Cart({
   const checkoutWithWhatsApp = () => {
     if (cartItems.length === 0) return;
 
-    // Create the message with each item on a new line
+    // Create message with each item on a new line
     const messageItems = cartItems
       .map((item) => `${item.name} x${item.quantity}`)
       .join('\n');
 
     const total = getTotalPrice().toFixed(2);
 
-    // Include customer info in the message
     const message = `Hello, I would like to place an order:\n${messageItems}\nTotal: $${total}\n\nPlease provide your name, phone number, and delivery address.`;
 
     const encodedMessage = encodeURIComponent(message);
-    // detect if the user is on mobile
+
+    // ✅ Your desired phone number with country code
+    const phoneNumber = '233547682546';
+
+    // Detect if user is on mobile
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    // WhatsApp URL for mobile or desktop
+
+    // Construct WhatsApp URL properly
     const whatsappUrl = isMobile
-      ? `https://wa.me/233554694601?text=${encodedMessage}`
-      : `https://web.whatsapp.com/send?phone=233554694601&text=${encodedMessage}`;
-    // Open WhatsApp
+      ? `https://wa.me/${phoneNumber}?text=${encodedMessage}` // Mobile
+      : `https://web.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`; // Desktop
+
+    // Open WhatsApp in new tab
     window.open(whatsappUrl, '_blank');
   };
 
