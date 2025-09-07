@@ -3,7 +3,7 @@ import FlavorList from './components/FlavorList';
 import Cart from './components/Cart';
 import { useState, useEffect } from 'react';
 import type { CartItem } from './types/types';
-import { BrowserRouter as Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 function App() {
   const [cartItems, setCartItems] = useState<CartItem[]>(() => {
