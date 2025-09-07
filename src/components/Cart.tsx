@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import type { CartItem } from '../types/types';
 import styles from '../css/Cart.module.css';
 
