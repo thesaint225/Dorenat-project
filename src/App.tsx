@@ -3,6 +3,7 @@ import FlavorList from './components/FlavorList';
 import Cart from './components/Cart';
 import { useState, useEffect } from 'react';
 import type { CartItem } from './types/types';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   const [cartItems, setCartItems] = useState<CartItem[]>(() => {
@@ -52,21 +53,38 @@ function App() {
 
   return (
     <>
-      <h1 className='text-4xl text-red-500'>Snack Store 🍿</h1>
-      <FlavorList
-        cartItems={cartItems}
-        addToCart={addToCart}
-        updateQuantity={updateQuantity}
-        removeFromCart={removeFromCart}
-      />
-      <Cart
-        cartItems={cartItems}
-        updateQuantity={updateQuantity}
-        removeFromCart={removeFromCart}
-        clearCart={clearCart}
-        getTotalItems={getTotalItems}
-        getTotalPrice={getTotalPrice}
-      />
+      {/* Store title visible on every page */}
+      <h1>Snack Store 🍿</h1>
+
+      <Routes>
+        {/* Products page */}
+        <Route
+          path='/'
+          element={
+            <FlavorList
+              cartItems={cartItems}
+              addToCart={addToCart}
+              updateQuantity={updateQuantity}
+              removeFromCart={removeFromCart}
+            />
+          }
+        />
+
+        {/* Cart page */}
+        <Route
+          path='/cart'
+          element={
+            <Cart
+              cartItems={cartItems}
+              updateQuantity={updateQuantity}
+              removeFromCart={removeFromCart}
+              clearCart={clearCart}
+              getTotalItems={getTotalItems}
+              getTotalPrice={getTotalPrice}
+            />
+          }
+        />
+      </Routes>
     </>
   );
 }
