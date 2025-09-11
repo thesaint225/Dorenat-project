@@ -1,5 +1,5 @@
 import useProducts from '../hooks/useProducts';
-import { useNavigate } from 'react-router-dom';
+
 import Spinner from './Spinner';
 import type { CartItem } from '../types/types';
 import styles from '../css/FlavourList.module.css';
