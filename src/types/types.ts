@@ -12,3 +12,7 @@ export interface Product {
   price: number;
   image: string;
 }
+
+export interface NavbarProps {
+  totalItems: number;
+}

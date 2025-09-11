@@ -2,7 +2,7 @@
   display: flex; /* arrange in a row */
   gap: 1rem; /* spacing between products */
   overflow-x: auto; /* scroll horizontally if too many */
-  padding: 1rem;
+  padding: 10rem 1rem;
 }
 
 .productCard {
@@ -53,6 +53,14 @@
   margin-bottom: 1rem;
 }
 
+/* Wrap both Add button and quantity controls in a container */
+.actionArea {
+  height: 50px; /* same height for both states */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .addButton {
   background: linear-gradient(135deg, #8b5e3c, #6f452a);
   color: #fff;
@@ -64,6 +72,8 @@
   cursor: pointer;
   transition: transform 0.2s ease, background 0.3s ease, opacity 0.3s ease;
   opacity: 1; /* always visible */
+  width: 150px;
+  text-align: center;
 }
 
 .addButton:hover {
@@ -78,4 +88,58 @@
   background: #ccc;
   cursor: not-allowed;
   opacity: 0.7;
+}
+
+/* Container for + / - buttons */
+.quantityControls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+  width: 150px; /* same width as addButton */
+  margin: 0 auto; /* center horizontally */
+}
+
+/* Plus and Minus buttons */
+.quantityControls button {
+  background: linear-gradient(135deg, #8b5e3c, #6f452a);
+  color: #fff;
+  border: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  font-size: 1.4rem; /* slightly larger */
+  font-weight: bold;
+  cursor: pointer;
+  display: flex; /* ✅ use flexBox */
+  align-items: center; /* ✅ vertically center */
+  justify-content: center; /* ✅ horizontally center */
+  transition: transform 0.2s ease, background 0.3s ease, opacity 0.3s ease;
+  line-height: 1; /* ✅ removes text baseline shift */
+  padding: 0; /* ✅ prevent extra spacing */
+}
+
+.quantityControls button:hover {
+  transform: scale(1.08);
+  background: linear-gradient(135deg, #6f452a, #5a3520);
+}
+
+.quantityControls button:active {
+  transform: scale(0.95);
+}
+
+.quantityControls button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Number between + and - */
+.qtyNumber {
+  font-size: 1rem;
+  font-weight: 600;
+  min-width: 1.5rem;
+  text-align: center;
+  color: #4b2e20; /* darker brown to match theme */
 }

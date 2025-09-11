@@ -4,6 +4,7 @@ import Cart from './components/Cart';
 import { useState, useEffect } from 'react';
 import type { CartItem } from './types/types';
 import { Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
 
 function App() {
   const [cartItems, setCartItems] = useState<CartItem[]>(() => {
@@ -51,10 +52,16 @@ function App() {
   const getTotalPrice = () =>
     cartItems.reduce((total, item) => total + item.quantity * item.price, 0);
 
+  const totalItemsInCart = cartItems.reduce(
+    (sum, item) => sum + item.quantity,
+    0
+  );
+
   return (
     <>
       {/* Store title visible on every page */}
-      <h1>Snack Store 🍿</h1>
+
+      <Navbar totalItems={totalItemsInCart} />
 
       <Routes>
         {/* Products page */}
