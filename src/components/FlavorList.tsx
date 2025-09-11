@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import useProducts from '../hooks/useProducts';
 import { useNavigate } from 'react-router-dom';
 import Spinner from './Spinner';
@@ -19,8 +18,6 @@ export default function FlavorList({
   removeFromCart,
 }: FlavorListProps) {
   const { data: products = [], loading } = useProducts();
-
-  const navigate = useNavigate();
 
   const getQuantity = (id: string): number => {
     const item = cartItems.find((cartItem) => cartItem.id === id);
